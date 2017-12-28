@@ -1,5 +1,12 @@
 # bearer-authentication
+
+To install:
+````powershell
+Install-Package BearerAuthentication
+````
+
 ### Is simple to implement on your WebAPI.
+
 First of all you need to add 3 keys on your Web.config and customize it:
 ````xml
 <add key="BearerAuthentication.Crypto.PasswordHash" value="MYP4SSW0RDH4SH"/>
