@@ -63,8 +63,8 @@ protected void Application_PostAuthorizeRequest()
 To finish you need to implement the step in which the user logs into the system, then it will look like this
 
 ````c#
-BearerToken bearerLogin = new BearerToken();
-bearerLogin.GenerateHeaderToken(user.identifier, user.email);
+BearerToken bearerToken = new BearerToken();
+bearerToken.GenerateHeaderToken(user.identifier, user.email);
 ````
 
 Then after this step, the access_token will always be updated with each request, so it is necessary that always send the latest access_token
