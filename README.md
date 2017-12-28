@@ -1,11 +1,21 @@
 # bearer-authentication
 
-To install:
+## Contents
+- [Installation](#installation)
+- [About](#about)
+- [Implementation](#implementation)
+
+
+### Installation
 ````powershell
 Install-Package BearerAuthentication
 ````
 
-### Is simple to implement on your WebAPI.
+### About
+Bearer authentication is an easy way to implement token authentication on your WebAPI.
+
+## Simple to implement.
+### Implementation
 
 First of all you need to add 3 keys on your Web.config and customize it:
 ````xml
@@ -14,7 +24,7 @@ First of all you need to add 3 keys on your Web.config and customize it:
 <add key="BearerAuthentication.Crypto.VIKey" value="V1KEY"/>
 ````
 
-Then in your FilterConfig need to add `BearerAuthenticationFilter` 
+Then in your `FilterConfig.cs` need to add `BearerAuthenticationFilter` 
 
 ````c#
 public class FilterConfig
