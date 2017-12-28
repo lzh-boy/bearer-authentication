@@ -17,7 +17,7 @@ Bearer authentication is an easy way to implement token authentication on your W
 ## Simple to implement.
 ### Implementation
 
-First of all you need to add 3 keys on your Web.config and customize it:
+First of all you need to add these three keys on your Web.config to have your own crypto keys, I recommend to change the values.
 ````xml
 <add key="BearerAuthentication.Crypto.PasswordHash" value="MYP4SSW0RDH4SH"/>
 <add key="BearerAuthentication.Crypto.SaltKey" value="S@LTK3Y"/>
