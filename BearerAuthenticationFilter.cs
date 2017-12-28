@@ -19,8 +19,6 @@ namespace BearerAuthentication
         {
         }
 
-        #region SEM MVC 
-        //BEFORE CALL ACTION
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
             if (SkipAuthorization(actionContext)) return;
@@ -78,40 +76,6 @@ namespace BearerAuthentication
 
             base.OnActionExecuted(actionExecutedContext);
         }
-        #endregion
 
-        #region COM MVC
-        //public override void OnActionExecuting(ActionExecutingContext filterContext)
-        //{
-        //    var headers = filterContext.HttpContext.Request.Headers;
-
-        //    IEnumerable<string> tempListValues = new List<string>();
-        //    string access_token = string.Empty;
-
-        //    tempListValues = headers.GetValues("access_token");
-        //    access_token = tempListValues.FirstOrDefault();
-
-        //    BearerAuthenticationToken lastToken = BearerSessionManager.GetLastAccessToken();
-
-        //    if (lastToken.access_token != access_token)
-        //    {
-        //        filterContext.Result = new HttpUnauthorizedResult();
-        //    }
-
-        //    base.OnActionExecuting(filterContext);
-        //}
-
-        //public override void OnActionExecuted(ActionExecutedContext filterContext)
-        //{
-        //    BearerToken bearerToken = new BearerToken();
-        //    BearerAuthenticationToken bearerAuthenticationToken = bearerToken.RefreshAccessToken();
-
-        //    filterContext.HttpContext.Response.Headers.Add("access_token", bearerAuthenticationToken.access_token);
-        //    filterContext.HttpContext.Response.Headers.Add("client", bearerAuthenticationToken.client);
-        //    filterContext.HttpContext.Response.Headers.Add("email", bearerAuthenticationToken.email);
-
-        //    base.OnActionExecuted(filterContext);
-        //} 
-        #endregion
     }
 }
