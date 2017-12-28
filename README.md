@@ -1,15 +1,16 @@
 # bearer-authentication
 
 ## Contents
-- [Installation](#installation)
+- [NuGet Installation](#nuget-installation)
 - [About](#about)
 - [Implementation](#implementation)
 
 
-### Installation
+### NuGet Installation
 ````powershell
 Install-Package BearerAuthentication
 ````
+You can find the [NuGet package here](https://www.nuget.org/packages/BearerAuthentication/)
 
 ### About
 Bearer authentication is an easy way to implement token authentication on your WebAPI.
