@@ -30,6 +30,7 @@ namespace BearerAuthentication
         internal BearerAuthenticationToken RefreshAccessToken()
         {
             var lastToken = BearerSessionManager.GetLastAccessToken();
+            if (lastToken.access_token == null) return lastToken;
 
             string userIdentifier = BearerCryptoHelper.Decrypt(lastToken.client);
 

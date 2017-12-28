@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BearerAuthentication
 {
@@ -12,6 +13,15 @@ namespace BearerAuthentication
         {
             BearerAuthenticationToken objToken = (BearerAuthenticationToken)obj;
             return objToken.access_token == access_token && objToken.client == client && objToken.uid == uid;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -2047944804;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(access_token);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(uid);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(client);
+            return hashCode;
         }
     }
 

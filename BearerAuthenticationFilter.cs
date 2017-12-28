@@ -70,9 +70,12 @@ namespace BearerAuthentication
             BearerToken bearerToken = new BearerToken();
             BearerAuthenticationToken bearerAuthenticationToken = bearerToken.RefreshAccessToken();
 
-            actionExecutedContext.Response.Headers.Add("access_token", bearerAuthenticationToken.access_token);
-            actionExecutedContext.Response.Headers.Add("client", bearerAuthenticationToken.client);
-            actionExecutedContext.Response.Headers.Add("uid", bearerAuthenticationToken.uid);
+            if(bearerAuthenticationToken.access_token != null)
+            {
+                actionExecutedContext.Response.Headers.Add("access_token", bearerAuthenticationToken.access_token);
+                actionExecutedContext.Response.Headers.Add("client", bearerAuthenticationToken.client);
+                actionExecutedContext.Response.Headers.Add("uid", bearerAuthenticationToken.uid);
+            }
 
             base.OnActionExecuted(actionExecutedContext);
         }
