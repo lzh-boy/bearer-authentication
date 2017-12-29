@@ -1,20 +1,36 @@
 # bearer-authentication
 
-To install:
+## Contents
+- [NuGet Installation](#nuget-installation)
+- [About](#about)
+- [Implementation](#implementation)
+
+
+### NuGet Installation
 ````powershell
 Install-Package BearerAuthentication
 ````
+You can find the [NuGet package here](https://www.nuget.org/packages/BearerAuthentication/)
 
-### Is simple to implement on your WebAPI.
+### About
+Bearer authentication is an easy way to implement token authentication on your WebAPI.
 
-First of all you need to add 3 keys on your Web.config and customize it:
+## Simple to implement.
+### Implementation
+
+First of all you need to add these three keys on your Web.config to have your own crypto keys, I recommend to change the values.
 ````xml
 <add key="BearerAuthentication.Crypto.PasswordHash" value="MYP4SSW0RDH4SH"/>
 <add key="BearerAuthentication.Crypto.SaltKey" value="S@LTK3Y"/>
 <add key="BearerAuthentication.Crypto.VIKey" value="V1KEY"/>
 ````
 
-Then in your FilterConfig need to add `BearerAuthenticationFilter` 
+If you want to add expire time on access token just add
+````xml
+<add key="BearerAuthentication.ExpireMinutes" value="60"/>
+````
+
+Then in your `FilterConfig.cs` need to add `BearerAuthenticationFilter` 
 
 ````c#
 public class FilterConfig
@@ -53,8 +69,8 @@ protected void Application_PostAuthorizeRequest()
 To finish you need to implement the step in which the user logs into the system, then it will look like this
 
 ````c#
-BearerToken bearerLogin = new BearerToken();
-bearerLogin.GenerateHeaderToken(user.identifier, user.email);
+BearerToken bearerToken = new BearerToken();
+bearerToken.GenerateHeaderToken(user.identifier, user.email);
 ````
 
 Then after this step, the access_token will always be updated with each request, so it is necessary that always send the latest access_token
