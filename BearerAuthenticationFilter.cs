@@ -46,9 +46,10 @@ namespace BearerAuthentication
                 uid = uid
             };
 
-            BearerAuthenticationToken lastToken = BearerSessionManager.GetLastAccessToken();
+            BearerAuthenticationToken lastToken = BearerSessionManager.GetActiveBearerAuthenticationToken();
+            DateTime? expiry = BearerSessionManager.GetExpireOnSession();
 
-            if (!tokenFromHeader.Equals(lastToken) || access_token == null)
+            if (!tokenFromHeader.Equals(lastToken) || access_token == null || (expiry.HasValue && expiry.Value <= DateTime.Now))
             {
                 actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
                 base.OnActionExecuting(actionContext);

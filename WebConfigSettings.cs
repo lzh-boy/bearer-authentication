@@ -32,5 +32,17 @@ namespace BearerAuthentication
                 return ConfigurationManager.AppSettings["BearerAuthentication.Crypto.VIKey"].ToString();
             }
         }
+
+        internal static int ExpireMinutes
+        {
+            get
+            {
+                int retorno = 0;
+
+                int.TryParse(ConfigurationManager.AppSettings["BearerAuthentication.ExpireMinutes"], out retorno);
+
+                return retorno;
+            }
+        }
     }
 }
