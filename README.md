@@ -25,6 +25,11 @@ First of all you need to add these three keys on your Web.config to have your ow
 <add key="BearerAuthentication.Crypto.VIKey" value="V1KEY"/>
 ````
 
+If you want to add expire time on access token just add
+````xml
+<add key="BearerAuthentication.ExpireMinutes" value="60"/>
+````
+
 Then in your `FilterConfig.cs` need to add `BearerAuthenticationFilter` 
 
 ````c#
